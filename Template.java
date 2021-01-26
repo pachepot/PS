@@ -11,17 +11,12 @@ public class Template {
 
     static int[] dx = {1, 0, -1, 0};
     static int[] dy = {0, -1, 0, 1};
-    static int n=0;
-    static int m=0;
     final static int mod = 1000000007;
-    static int size=0;
-    static int[][] map;
 
     static ArrayList<Integer> x = new ArrayList<>();
     static ArrayList<Integer> y = new ArrayList<>();
     static ArrayList<Integer> bx = new ArrayList<>();
     static ArrayList<Integer> by = new ArrayList<>();
-    static ArrayList<Boolean> select = new ArrayList<>();
 
 
     public static void main(String[] args) {
@@ -71,14 +66,18 @@ public class Template {
 
     }
 
-
-    private static void printArray(int[] arr) {
+    static void printArray(int[] arr) {
         System.out.print("[");
         for (int i=0; i<arr.length; i++) System.out.print(arr[i]+" ");
         System.out.println("]");
-    }
+    } // 배열 출력
 
-    static void BS (int left, int right) {
+    static boolean checkPrime (long n) {
+        for (int i=2; i<=Math.sqrt(n); i++) if (n%i==0) return false;
+        return true;
+    } // 소수 검사
+
+    static void binarySearch (int left, int right) {
 
         int mid=(left+right)/2;
 
@@ -95,93 +94,27 @@ public class Template {
             BS(left,mid-1);
         }
 
+    } // 이분 탐색
 
-    }
+    static void twoPointer () {
 
+        int back=0, front=1, sum=1;
 
-    static long sigma (long n) {
+        while (true) {
 
-        return n*(n+1)/2;
-
-    }
-
-
-
-    static void choose (int q) {
-
-        if (size==m) {
-
-            for (int i=0; i<bx.size(); i++) map[bx.get(i)][by.get(i)]=3;
-            //bfs();
-            for (int i=0; i<bx.size(); i++) map[bx.get(i)][by.get(i)]=2;
-
-            return;
-        }
-
-        for (int i=q; i<x.size(); i++) {
-
-            if (!select.get(i)) {
-                select.set(i, true);
-                size++;
-                bx.add(x.get(i));
-                by.add(y.get(i));
-
-                choose(i+1);
-
-                select.set(i, false);
-                size--;
-                bx.remove(bx.size()-1);
-                by.remove(by.size()-1);
+            if (front==n) {
+                ans++;
+                break;
             }
 
-        }
+            if (sum==n) ans++;
 
-    }
-
-    static void Check (char land[][], int startX, int startY) {
-
-        boolean[][] visit = new boolean[n][m];
-        visit[startX][startY]=true;
-
-        Queue<Integer> qx = new LinkedList<>();
-        Queue<Integer> qy = new LinkedList<>();
-        Queue<Integer> qr = new LinkedList<>();
-
-        qx.offer(startX);
-        qy.offer(startY);
-        qr.offer(0);
-
-        while (!qx.isEmpty()) {
-
-            int x = qx.poll();
-            int y = qy.poll();
-            int r = qr.poll();
-
-            for (int i=0; i<4; i++) {
-
-                if (0<=x+dx[i] && x+dx[i]<n && 0<=y+dy[i] && y+dy[i]<m && land[x+dx[i]][y+dy[i]]=='L' && !visit[x+dx[i]][y+dy[i]]) {
-
-                    //if (r+1>max) max = r+1;
-
-                    visit[x+dx[i]][y+dy[i]]=true;
-                    qx.offer(x+dx[i]);
-                    qy.offer(y+dy[i]);
-                    qr.offer(r+1);
-
-                }
-
-            }
+            if (sum<=n) sum += ++front;
+            else sum -= back++;
 
         }
 
-    }
-
-    static boolean checkPrime (long n) {
-
-        for (int i=2; i<=Math.sqrt(n); i++) if (n%i==0) return false;
-        return true;
-
-    }
+    } // 투 포인터
 
     static boolean KMP () throws IOException {
 
