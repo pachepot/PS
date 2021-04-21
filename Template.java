@@ -11,6 +11,7 @@ public class Template {
 
     static int[] dx = {1, 0, -1, 0};
     static int[] dy = {0, -1, 0, 1};
+
     final static int mod = 1000000007;
 
     static ArrayList<Integer> x = new ArrayList<>();
@@ -21,19 +22,8 @@ public class Template {
 
     public static void main(String[] args) {
 
-        boolean[] notPrime = new boolean[4000001];
-        ArrayList<Integer> prime = new ArrayList<>();
-
-        for (int i=2; i<=4000000; i++) {
-            if (!notPrime[i]) {
-                prime.add(i);
-                for (int j=i; j+i<=4000000;) {
-                    j+=i;
-                    notPrime[j]=true;
-                }
-            }
-        }
-
+        Queue<int[]> qu = new LinkedList<>();
+        qu.add(new int[] {0, 1, 2, 3});
 
         Queue<Point> q = new LinkedList<>();
         int[][] dot = new int[n][m];
@@ -61,16 +51,30 @@ public class Template {
 
 
 
-        Queue<int[]> qu = new LinkedList<>();
-        qu.add(new int[] {0, 1, 2, 3});
-
     }
 
-    static void printArray(int[] arr) {
+    static void pintArray(int[] arr) {
         System.out.print("[");
         for (int i=0; i<arr.length; i++) System.out.print(arr[i]+" ");
         System.out.println("]");
     } // 배열 출력
+
+    static void prime () {
+
+        boolean[] notPrime = new boolean[4000001];
+        ArrayList<Integer> prime = new ArrayList<>();
+
+        for (int i=2; i<=4000000; i++) {
+            if (!notPrime[i]) {
+                prime.add(i);
+                for (int j=i; j+i<=4000000;) {
+                    j+=i;
+                    notPrime[j]=true;
+                }
+            }
+        }
+
+    } // 소수 찾기
 
     static boolean checkPrime (long n) {
         for (int i=2; i<=Math.sqrt(n); i++) if (n%i==0) return false;
@@ -151,6 +155,6 @@ public class Template {
 
         return false;
 
-    }
+    } // KMP
 
 }
