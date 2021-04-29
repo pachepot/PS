@@ -157,6 +157,29 @@ public class Template {
 
     } // KMP
 
+    static void backTracking () {
+
+        if (stack.size()==n) {
+            int sum = 0;
+            for (int i = 0; i < n-1; i++) sum+=Math.abs(stack.get(i)-stack.get(i+1));
+            if (sum > max) max = sum;
+            return;
+        }
+
+        for (int i=0; i<n; i++) {
+
+            if (used[i]) continue;
+
+            stack.push(A[i]);
+            used[i] = true;
+            backTracking();
+            stack.pop();
+            used[i] = false;
+
+        }
+
+    } // 백 트래킹
+
 
 
     static int readInt() {
