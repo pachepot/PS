@@ -13,8 +13,7 @@ public class Main {
 
     public static void main (String[] args) throws Exception {
 
-        int t = readInt();
-        for (int i=0; i<t; i++) solve();
+        solve();
 
         bw.write(sb.toString());
         bw.flush();
@@ -23,26 +22,7 @@ public class Main {
 
     static void solve () throws Exception {
 
-        int n = readInt();
-        String s = readLine();
-
-        boolean[] check = new boolean[26];
-        check[s.charAt(0)-65] = true;
-
-        for (int i=1; i<n; i++) {
-
-            if (s.charAt(i-1)==s.charAt(i)) continue;
-
-            else if (check[s.charAt(i)-65]) {
-                sb.append("NO\n");
-                return;
-            }
-
-            else check[s.charAt(i)-65] = true;
-
-        }
-
-        sb.append("YES\n");
+        //solution
 
     }
 
