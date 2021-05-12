@@ -64,7 +64,7 @@ public class Main {
 
 }
 
-class FastReader {  
+class FastReader {
 
     BufferedReader br;
     StringTokenizer st;
