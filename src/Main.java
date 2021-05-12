@@ -23,19 +23,7 @@ public class Main {
 
     static void solve () throws Exception {
 
-        long n = readInt();
-        long len = Long.toString(n).length();
-        long answer = (len-1)*9;
-
-        for (int i=1; i<=9; i++) {
-
-            long num=0;
-            for (int j=0; j<len; j++) num = num*10+i;
-            if (num<=n) answer++;
-
-        }
-
-        sb.append(answer+"\n");
+        //solution
 
     }
 
