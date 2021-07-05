@@ -49,9 +49,19 @@ public class Template {
 
         } // bfs
 
-
-
     }
+
+    static void sort() {
+
+        Arrays.sort(cel, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                if (o1[0] != o2[0]) return Integer.compare(o1[0], o2[0]);
+                else return Integer.compare(o1[1],o2[1]);
+            }
+        });
+
+    } // 정렬 변경
 
     static void pintArray(int[] arr) {
         System.out.print("[");
