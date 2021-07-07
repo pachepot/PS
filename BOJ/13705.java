@@ -22,12 +22,10 @@ public class Main {
         BigDecimal zero = BigDecimal.ZERO;
 
         for (int i = 0; i < 1000; ++i) {
-
             answer = down.add(up, mc).divide(two, mc);
             BigDecimal v = a.multiply(answer, mc).add(b.multiply(sin(answer), mc), mc).subtract(c, mc);
             if (v.compareTo(zero) < 0) down = answer;
             else up = answer;
-
         }
 
         System.out.println(answer.setScale(6, BigDecimal.ROUND_HALF_UP));
