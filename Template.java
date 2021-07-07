@@ -91,10 +91,10 @@ public class Template {
         return true;
     } // 소수 검사
 
-    static int GCD (int a, int b) {
+    static int GCD (int p, int q) {
 
-        if(b == 0) return a;
-        else return GCD(b, a%b);
+        if(q == 0) return p;
+        else return GCD(q, p%q);
 
     } // 최대 공약수
 
