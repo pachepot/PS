@@ -94,7 +94,7 @@ public class Template {
     static int GCD (int a, int b) {
 
         if(b == 0) return a;
-        else return GCD(a, a%b);
+        else return GCD(b, a%b);
 
     } // 최대 공약수
 
