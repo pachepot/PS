@@ -91,6 +91,13 @@ public class Template {
         return true;
     } // 소수 검사
 
+    static int GCD (int a, int b) {
+
+        if(b == 0) return a;
+        else return GCD(a, a%b);
+
+    } // 최대 공약수
+
     static void binarySearch (int left, int right) {
 
         int mid=(left+right)/2;
