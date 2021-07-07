@@ -207,7 +207,7 @@ public class Template {
         return in.nextLong();
     }
 
-    static Double readDouble() {
+    static double readDouble() {
         return in.nextDouble();
     }
 
