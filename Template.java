@@ -19,36 +19,10 @@ public class Template {
     static ArrayList<Integer> bx = new ArrayList<>();
     static ArrayList<Integer> by = new ArrayList<>();
 
-
     public static void main(String[] args) {
 
         Queue<int[]> qu = new LinkedList<>();
         qu.add(new int[] {0, 1, 2, 3});
-
-        Queue<Point> q = new LinkedList<>();
-        int[][] dot = new int[n][m];
-        boolean[][] visit = new boolean[n][m];
-        int count=1;
-
-        while (!q.isEmpty()) {
-
-            int x = q.peek().x;
-            int y = q.poll().y;
-
-            for (int i=0; i<4; i++) {
-
-                if (0<=x+dx[i] && x+dx[i]<n && 0<=y+dy[i] && y+dy[i]<m && !visit[x + dx[i]][y + dy[i]] && dot[x + dx[i]][y + dy[i]]==0) {
-
-                    count++;
-                    visit[x + dx[i]][y + dy[i]]=true;
-                    q.offer(new Point(x+dx[i], y+dy[i]));
-
-                }
-
-            }
-
-        } // bfs
-
     }
 
     static void sort() {
@@ -63,7 +37,7 @@ public class Template {
 
     } // 정렬 변경
 
-    static void pintArray(int[] arr) {
+    static void printArray(int[] arr) {
         System.out.print("[");
         for (int i=0; i<arr.length; i++) System.out.print(arr[i]+" ");
         System.out.println("]");
@@ -94,29 +68,24 @@ public class Template {
     static void BFS (int r, int c) {
 
         Queue<Node> q = new LinkedList<>();
-
-        q.offer(new Node(r, c, 0));
+        q.offer(new Node(r, c));
 
         visit[r][c] = true;
 
-        loop : while (!q.isEmpty()) {
+        while (!q.isEmpty()) {
 
-            int x = q.peek().r;
-            int y = q.peek().c;
-            int t = q.poll().t;
+            int x = q.peek().x;
+            int y = q.poll().y;
 
-            for (int i=0; i<8; i++) {
+            for (int i=0; i<4; i++) {
 
-                if (0<=x+dx[i] && x+dx[i]<l && 0<=y+dy[i] && y+dy[i]<l && !visit[x + dx[i]][y + dy[i]]) {
+                if (0<=x+dx[i] && x+dx[i]<N && 0<=y+dy[i] && y+dy[i]<M && space[x+dx[i]][y+dy[i]]==1) {
+                    contact[x+dx[i]][y+dy[i]]++;
+                }
 
-                    if (x+dx[i]==deX && y+dy[i]==deY) {
-                        sb.append(t+1+"\n");
-                        break loop;
-                    }
-
+                else if (0<=x+dx[i] && x+dx[i]<N && 0<=y+dy[i] && y+dy[i]<M && space[x+dx[i]][y+dy[i]]==0 &&!visit[x + dx[i]][y + dy[i]]) {
                     visit[x + dx[i]][y + dy[i]]=true;
-                    q.offer(new Node(x+dx[i], y+dy[i], t+1));
-
+                    q.offer(new Node(x+dx[i], y+dy[i]));
                 }
 
             }
