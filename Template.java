@@ -91,6 +91,40 @@ public class Template {
         return true;
     } // 소수 검사
 
+    static void BFS (int r, int c) {
+
+        Queue<Node> q = new LinkedList<>();
+
+        q.offer(new Node(r, c, 0));
+
+        visit[r][c] = true;
+
+        loop : while (!q.isEmpty()) {
+
+            int x = q.peek().r;
+            int y = q.peek().c;
+            int t = q.poll().t;
+
+            for (int i=0; i<8; i++) {
+
+                if (0<=x+dx[i] && x+dx[i]<l && 0<=y+dy[i] && y+dy[i]<l && !visit[x + dx[i]][y + dy[i]]) {
+
+                    if (x+dx[i]==deX && y+dy[i]==deY) {
+                        sb.append(t+1+"\n");
+                        break loop;
+                    }
+
+                    visit[x + dx[i]][y + dy[i]]=true;
+                    q.offer(new Node(x+dx[i], y+dy[i], t+1));
+
+                }
+
+            }
+
+        }
+
+    } // BFS
+
     static int GCD (int p, int q) {
 
         if(q == 0) return p;
@@ -256,4 +290,20 @@ class FastReader {
         return str;
     }
 
-}
+} // Fast IO
+
+class Node {
+
+    Node(int r, int c, int t) {
+
+        this.r = r;
+        this.c = c;
+        this.t = t;
+
+    }
+
+    int r;
+    int c;
+    int t;
+
+} 정점
