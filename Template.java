@@ -4,6 +4,9 @@ import java.util.*;
 
 public class Template {
 
+    static FastReader in = new FastReader();
+    static PrintWriter out = new PrintWriter(System.out);
+
     static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
@@ -14,15 +17,11 @@ public class Template {
 
     final static int mod = 1000000007;
 
-    static ArrayList<Integer> x = new ArrayList<>();
-    static ArrayList<Integer> y = new ArrayList<>();
-    static ArrayList<Integer> bx = new ArrayList<>();
-    static ArrayList<Integer> by = new ArrayList<>();
-
     public static void main(String[] args) {
 
         Queue<int[]> qu = new LinkedList<>();
         qu.add(new int[] {0, 1, 2, 3});
+
     }
 
     static void sort() {
