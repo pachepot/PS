@@ -136,16 +136,16 @@ public class Template {
 
     } // 투 포인터
 
-    static int CCW (int x1, int y1, int x2, int y2, int x3, int y3) {
+    static int CCW (long x1, long y1, long x2, long y2, long x3, long y3) {
 
-        int tmp = x1*y2 + x2*y3 + x3*y1;
-        int tmp2 = x2*y1 + x3*y2 + x1*y3;
+        long tmp = x1*y2 + x2*y3 + x3*y1;
+        long tmp2 = x2*y1 + x3*y2 + x1*y3;
 
-        int S = tmp-tmp2;
+        long S = tmp-tmp2;
 
         if (S<0) return -1;
-        else if (S==0) return 0;
-        else return 1;
+        else if (S>0) return 1;
+        else return 0;
 
 
     } // CCW
