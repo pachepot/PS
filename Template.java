@@ -148,7 +148,7 @@ public class Template {
         else return 1;
 
 
-    }
+    } // CCW
 
     static boolean KMP () throws IOException {
 
