@@ -138,17 +138,36 @@ public class Template {
 
     static int CCW (long x1, long y1, long x2, long y2, long x3, long y3) {
 
-        long tmp = x1*y2 + x2*y3 + x3*y1;
-        long tmp2 = x2*y1 + x3*y2 + x1*y3;
+        long a = x2 - x1;
+        long b = y2 - y1;
+        long c = x3 - x1;
+        long d = y3 - y1;
 
-        long S = tmp-tmp2;
+        long S = a*d-b*c;
 
+        if (S>0) return 1;
         if (S<0) return -1;
-        else if (S>0) return 1;
-        else return 0;
-
+        return 0;
 
     } // CCW
+
+    static boolean crossLine (int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4) {
+
+        int con1 = CCW(x1, y1, x2, y2, x3, y3);
+        int con2 = CCW(x1, y1, x2, y2, x4, y4);
+        int con3 = CCW(x3, y3, x4, y4, x1, y1);
+        int con4 = CCW(x3, y3, x4, y4, x2, y2);
+
+        if (((con1==1 && con2==-1) || (con1==-1 && con2==1)) && ((con3==1 && con4==-1) || (con3==-1 && con4==1))) return true;
+
+        else if (con1==0 && Math.min(x1, x2) <= x3 && x3 <= Math.max(x1, x2) && Math.min(y1, y2) <= y3 && y3 <= Math.max(y1, y2)) return true;
+        else if (con2==0 && Math.min(x1, x2) <= x4 && x4 <= Math.max(x1, x2) && Math.min(y1, y2) <= y4 && y4 <= Math.max(y1, y2)) return true;
+        else if (con3==0 && Math.min(x3, x4) <= x1 && x1 <= Math.max(x3, x4) && Math.min(y3, y4) <= y1 && y1 <= Math.max(y3, y4)) return true;
+        else if (con4==0 && Math.min(x3, x4) <= x2 && x2 <= Math.max(x3, x4) && Math.min(y3, y4) <= y2 && y2 <= Math.max(y3, y4)) return true;
+
+        else return false;
+
+    } // 선분 교차
 
     static boolean KMP () throws IOException {
 
