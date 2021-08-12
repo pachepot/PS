@@ -104,14 +104,11 @@ public class Template {
 
         int mid=(left+right)/2;
 
-        if (left>right) {
-            sb.append(mid);
-            return;
-        }
+        if (left>right) sb.append(mid);
 
         else if (tree(mid)>=M) binarySearch(mid+1,right);
 
-        else if (tree(mid)<M) binarySearch(left,mid-1);
+        else binarySearch(left,mid-1);
 
 
     } // 이분 탐색
