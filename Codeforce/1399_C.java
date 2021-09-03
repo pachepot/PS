@@ -3,7 +3,6 @@ import java.util.*;
 
 public class Main {
 
-    static Scanner sc = new Scanner(System.in);
     static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
@@ -15,8 +14,6 @@ public class Main {
 
         int t = Integer.parseInt(br.readLine());
         for (int i=0; i<t; i++) solve();
-
-
 
         bw.write(sb.toString());
         bw.flush();
@@ -45,16 +42,14 @@ public class Main {
 
     static void choose (int[] arr, boolean[] check , int index, int sum) {
 
-        for (int i=index+1; i<arr.length; i++)
-            if (arr[index]+arr[i]==sum && !check[index] && !check[i]) {
-                check[index]=true;
-                check[i]=true;
+        for (int i=index+1; i<arr.length; i++) {
+            if (arr[index] + arr[i] == sum && !check[index] && !check[i]) {
+                check[index] = true;
+                check[i] = true;
                 cnt++;
             }
-
-
+        }
 
     }
-
 
 }
