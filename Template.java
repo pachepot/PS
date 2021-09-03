@@ -42,15 +42,16 @@ public class Template {
         System.out.println("]");
     } // 배열 출력
 
-    static void prime () {
+    static void findPrime () {
 
-        boolean[] notPrime = new boolean[4000001];
+        int size = 1000000;
+        boolean[] notPrime = new boolean[size+1];
         ArrayList<Integer> prime = new ArrayList<>();
 
-        for (int i=2; i<=4000000; i++) {
+        for (int i=2; i<=size; i++) {
             if (!notPrime[i]) {
                 prime.add(i);
-                for (int j=i; j+i<=4000000;) {
+                for (int j=i; j+i<=size;) {
                     j+=i;
                     notPrime[j]=true;
                 }
