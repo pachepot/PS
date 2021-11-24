@@ -37,7 +37,7 @@ public class Template {
             }
         });
 
-    } // 정렬 변경
+    } // Change Sort
 
     static void copyMultiDimensionArray (boolean[][] a, boolean[][] b, int n) {
 
@@ -74,6 +74,26 @@ public class Template {
         return true;
     } // Check Prime
 
+    static int GCD (int p, int q) {
+
+        if(q == 0) return p;
+        else return GCD(q, p%q);
+
+    } // GCD
+
+    static void binarySearch (int left, int right) {
+
+        int mid=(left+right)/2;
+
+        if (left>right) sb.append(mid);
+
+        else if (tree(mid)>=M) binarySearch(mid+1,right);
+
+        else binarySearch(left,mid-1);
+
+
+    } // Binary Search
+
     static void BFS (int r, int c) {
 
         Queue<Node> q = new LinkedList<>();
@@ -103,6 +123,31 @@ public class Template {
 
     } // BFS
 
+    static void DFS (int r, int c) {
+
+        if (stack.size() == 6) {
+
+            String num = "";
+            for (int i = 0; i < 6; i++) num += stack.get(i);
+            set.add(num);
+            return;
+
+        }
+
+        for (int i = 0; i < 4; i++) {
+
+            if (0 <= r+dx[i] && r+dx[i] < 5 && 0 <= c+dy[i] && c+dy[i] < 5) {
+
+                stack.push(digit[r+dx[i]][c+dy[i]]);
+                DFS(r+dx[i], c+dy[i]);
+                stack.pop();
+
+            }
+
+        }
+
+    } // DFS
+
     static void backTracking () {
 
         if (stack.size()==n) {
@@ -125,26 +170,6 @@ public class Template {
         }
 
     } // Back Tracking
-
-    static int GCD (int p, int q) {
-
-        if(q == 0) return p;
-        else return GCD(q, p%q);
-
-    } // GCD
-
-    static void binarySearch (int left, int right) {
-
-        int mid=(left+right)/2;
-
-        if (left>right) sb.append(mid);
-
-        else if (tree(mid)>=M) binarySearch(mid+1,right);
-
-        else binarySearch(left,mid-1);
-
-
-    } // Binary Search
 
     static void twoPointer () {
 
