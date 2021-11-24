@@ -171,6 +171,31 @@ public class Template {
 
     } // Back Tracking
 
+    static void divedeConquer (int xStart, int yStart, int xEnd, int yEnd) {
+
+        int b = 0, w = 0, size = (xEnd-xStart+1)*(yEnd-yStart+1);
+
+        for (int i = yStart; i <= yEnd; i++) {
+            for (int j = xStart; j <= xEnd; j++) {
+                if (cel[i][j]==0) b++;
+                else w++;
+            }
+        }
+
+        if (b==size) blue++;
+        else if (w==size) white++;
+
+        else {
+
+            divedeConquer(xStart, yStart, xStart+(xEnd-xStart)/2, yStart+(xEnd-xStart)/2);
+            divedeConquer(xStart+(xEnd-xStart+1)/2, yStart, xEnd, yStart+(xEnd-xStart)/2);
+            divedeConquer(xStart, yStart+(xEnd-xStart+1)/2, xStart+(xEnd-xStart)/2, yEnd);
+            divedeConquer(xStart+(xEnd-xStart+1)/2, yStart+(xEnd-xStart+1)/2, xEnd, yEnd);
+
+        }
+
+    } // Divide and Conquer
+
     static void twoPointer () {
 
         int back=0, front=1, sum=1;
@@ -263,7 +288,6 @@ public class Template {
 
 
 
-
     static int readInt() {
         return in.nextInt();
     } // Fast Reader
@@ -340,4 +364,4 @@ class Node {
     int c;
     int t;
 
-} 정점
+} Node
