@@ -15,6 +15,9 @@ public class Template {
     static int[] dx = {1, 0, -1, 0};
     static int[] dy = {0, -1, 0, 1};
 
+    static int[] dx8 = {1, 1, 0, -1, -1, -1, 0, 1};
+    static int[] dy8 = {0, -1, -1, -1, 0, 1, 1, 1};
+
     final static int mod = 1000000007;
 
     public static void main(String[] args) {
@@ -36,11 +39,17 @@ public class Template {
 
     } // 정렬 변경
 
+    static void copyMultiDimensionArray (boolean[][] a, boolean[][] b, int n) {
+
+        for (int i=0; i<n; i++) for (int j=0; j<n; j++) b[i][j] = a[i][j];
+
+    } // Copy Array
+
     static void printArray(int[] arr) {
         System.out.print("[");
         for (int i=0; i<arr.length; i++) System.out.print(arr[i]+" ");
         System.out.println("]");
-    } // 배열 출력
+    } // Print Array
 
     static void findPrime () {
 
@@ -58,12 +67,12 @@ public class Template {
             }
         }
 
-    } // 소수 찾기
+    } // Find prime
 
     static boolean checkPrime (long n) {
         for (int i=2; i<=Math.sqrt(n); i++) if (n%i==0) return false;
         return true;
-    } // 소수 검사
+    } // Check Prime
 
     static void BFS (int r, int c) {
 
@@ -94,12 +103,35 @@ public class Template {
 
     } // BFS
 
+    static void backTracking () {
+
+        if (stack.size()==n) {
+            int sum = 0;
+            for (int i = 0; i < n-1; i++) sum+=Math.abs(stack.get(i)-stack.get(i+1));
+            if (sum > max) max = sum;
+            return;
+        }
+
+        for (int i=0; i<n; i++) {
+
+            if (used[i]) continue;
+
+            stack.push(A[i]);
+            used[i] = true;
+            backTracking();
+            stack.pop();
+            used[i] = false;
+
+        }
+
+    } // Back Tracking
+
     static int GCD (int p, int q) {
 
         if(q == 0) return p;
         else return GCD(q, p%q);
 
-    } // 최대 공약수
+    } // GCD
 
     static void binarySearch (int left, int right) {
 
@@ -112,7 +144,7 @@ public class Template {
         else binarySearch(left,mid-1);
 
 
-    } // 이분 탐색
+    } // Binary Search
 
     static void twoPointer () {
 
@@ -132,7 +164,7 @@ public class Template {
 
         }
 
-    } // 투 포인터
+    } // Two Pointer
 
     static int CCW (long x1, long y1, long x2, long y2, long x3, long y3) {
 
@@ -165,7 +197,7 @@ public class Template {
 
         else return false;
 
-    } // 선분 교차
+    } // Line Intersection
 
     static boolean KMP () throws IOException {
 
@@ -204,42 +236,20 @@ public class Template {
 
     } // KMP
 
-    static void backTracking () {
-
-        if (stack.size()==n) {
-            int sum = 0;
-            for (int i = 0; i < n-1; i++) sum+=Math.abs(stack.get(i)-stack.get(i+1));
-            if (sum > max) max = sum;
-            return;
-        }
-
-        for (int i=0; i<n; i++) {
-
-            if (used[i]) continue;
-
-            stack.push(A[i]);
-            used[i] = true;
-            backTracking();
-            stack.pop();
-            used[i] = false;
-
-        }
-
-    } // 백 트래킹
 
 
 
     static int readInt() {
         return in.nextInt();
-    }
+    } // Fast Reader
 
     static long readLong() {
         return in.nextLong();
-    }
+    } // Fast Reader
 
     static double readDouble() {
         return in.nextDouble();
-    }
+    } // Fast Reader
 
     static String readLine() {
         return in.nextLine();
