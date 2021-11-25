@@ -69,10 +69,16 @@ public class Template {
 
     } // Find prime
 
-    static boolean checkPrime (long n) {
+    static boolean isPrime (long n) {
         for (int i=2; i<=Math.sqrt(n); i++) if (n%i==0) return false;
         return true;
     } // Check Prime
+
+    static boolean isPalindrome (String s) {
+        int len = s.length();
+        for (int i = 0; i < len/2; i++) if (s.charAt(i)!=s.charAt(len-1-i)) return false;
+        return true;
+    } // Check Palindrome
 
     static int GCD (int p, int q) {
 
