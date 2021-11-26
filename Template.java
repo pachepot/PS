@@ -22,12 +22,16 @@ public class Template {
 
     public static void main(String[] args) {
 
+    }
+
+    {
+
         Queue<int[]> qu = new LinkedList<>();
         qu.add(new int[] {0, 1, 2, 3});
 
-    }
+    } // Array in Queue
 
-    static void sort() {
+    {
 
         Arrays.sort(cel, new Comparator<int[]>() {
             @Override
